@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	</head>
+	<body>
+		<tr>
+			<td>Dear<%= @emaildatas.employee.employee_name %>,<br/>
+				<br />
+				 Your training nomination has been approved by your manager Mr.Ali. <br/>
+				 <br/>
+				 <b>Training Details.</b> <br/>
+				 Training Name :<%= @emaildatas.training.training_name %><br/>
+				 Start Date :<%= @emaildatas.training.start_date %><br/>
+				 End Date :<%= @emaildatas.training.end_date %><br/>
+				 Duration :<%= @emaildatas.training.duration %><br/>
+				 Location:<%= @emaildatas.training.location %><br/>
+				 <br />
+				 Note: HR will shortly send across the meeting invitation for the training.</br>
+				 <br />
+				 <br />
+				Thanks & Regards, <br />
+				Marlabs Training Team
+				</td>
+		</tr>
+	</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Marlabs - Nominate Trainee Details - HR Review</title>
+		<link href="./css/masterStyle.css" type="text/css" rel="stylesheet" />
+<script src="./js/jquery.js" type="text/javascript" ></script>
+<script src="./js/jquery-ui-1.8.1.custom.min.js"  type="text/javascript" ></script>
+<script src="./js/jquery.ui.datepicker.js" type="text/javascript" ></script>
+<link href="./css/jquery-ui-1.css" type="text/css" rel="stylesheet" />
+<link href="./css/jquery-ui-1.8.16.custom.css" type="text/css" rel="stylesheet" />
+		<style type="text/css">
+			tr.important {
+				color: red;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$('#searchtoggling').hide();
+
+				$("#txtFromDate").datepicker({
+					showOn : "button",
+					buttonImage : "./images/date-picker.png",
+					buttonImageOnly : true
+				});
+				$("#txtToDate").datepicker({
+					showOn : "button",
+					buttonImage : "./images/date-picker.png",
+					buttonImageOnly : true
+				});
+			});
+			function showdata() {
+
+				var trainings_id = $('#trainings_id option:selected').val();
+
+				var startDate = $('#txtFromDate').val();
+				var endDate = $('#txtToDate').val();
+
+				var statusapproved = $('#approved:checked').val();
+
+				var statusnotapproved = $('#notapproved:checked').val();
+
+				$.ajax({
+
+					url : 'search_nomineedata',
+					data : 'trainining_id=' + trainings_id + '&endDate=' + endDate + '&startDate=' + startDate + '&statusapproved=' + statusapproved + '&statusnotapproved=' + statusnotapproved,
+					//data: trainings_id='trainings_id.val()'
+					success : function(data) {
+
+						document.getElementById("loadGrid").style.display = 'block';
+						document.getElementById("loadGrid").innerHTML = data;
+
+					}
+				});
+
+			}
+
+			function resetdata(){
+$('#trainings_id ').val('');
+
+$('#txtFromDate').val('');
+$('#txtToDate').val('');
+$("#approved").removeAttr("checked"); 
+$("#notapproved").removeAttr("checked"); 
+
+location.reload();
+
+}
+
+
+			function summary(empnumber) {
+				
+				
+				$("#summarydata").dialog({
+					title : 'Summary',
+					modal : true,
+					width : 600,
+					height : 500
+
+				})
+
+				var id = empnumber;
+				
+				$.ajax({
+
+					url : 'search_nominee_summary',
+					data : 'employee_id=' + id,
+					//data: trainings_id='trainings_id.val()'
+					success : function(data) {
+						//document.getElementById("summarydata").style.display='block';
+						//document.getElementById("summarydata").innerHTML=data;
+
+						$("#summarydata").html(data);
+
+					}
+				});
+
+			}
+
+			function approve() {
+
+				var frm = document.getElementById('frmMain');
+
+				frm.action = 'search_nominee_mail';
+				frm.submit();
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id="admain">
+			<h2>Nominate Trainee Details - HR Review</h2>
+			<div>
+				<table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+					<tr>
+						<td width="20%" class="tblLabel"><%= label(:trainings, :training_name, "Training Name", :class => "tblLabel") %></td>
+						<td width="30%" class="tblContent" >
+						<div id="trainingname">
+							<%= collection_select :trainings, :id, Training.all, :id, :training_name, :prompt => "Select" %>
+						</div></td>
+					</tr>
+					<tr>
+						<td class="tblLabel">Start Date</td>
+						<td width="36%" class="tblContent" >
+						<input name="txtFromDate" type="text"  id="txtFromDate" size="10" class="inputField" />
+						</td>
+						<td width="20%" class="tblLabel">End Date</td>
+						<td width="30%" class="tblContent" >
+						<input name="txtToDate" type="text"  id="txtToDate" size="10" class="inputField" />
+						</td>
+					</tr>
+					<tr>
+						<td class="tblLabel">Approved</td>
+						<%#= check_box :employee_training, :status_approved%></td> <td width="36%" class="tblContent" >
+						<input name="approved" type="checkbox" value="2" id="approved" size="10" class="inputField" />
+						</td>
+						<td width="20%" class="tblLabel">Not Approved</td>
+						<%#= check_box :employee_training, :status%></td> <td width="30%" class="tblContent" >
+						<input name="approved" type="checkbox" value="3" id="notapproved" size="10" class="inputField" />
+						</td>
+					</tr>
+				</table>
+				<div style="float:right;margin-top:5px;">
+					<div class="buttonBlueLeft" style="cursor:pointer">
+						<div class="buttonText" onclick="showdata();">
+							Search
+						</div>
+						<div class="buttonBlueRight_M"></div>
+					</div>
+					<div class="buttonBlueLeft" style="margin-left:5px;">
+						<div class="buttonText" onclick="resetdata();">
+							Reset
+						</div>
+						<div class="buttonBlueRight_M"></div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<br />
+		</div>
+		<div id="loadGrid" style="display:none"></div>
+		<body>
+			<div id="summarydata" style="display:none"></div>
+		</body>
+	</body>
+</html>

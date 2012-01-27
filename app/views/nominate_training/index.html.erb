@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Marlabs - Nominate Trainee Form</title>
+<script type="text/javascript">
+
+$(document).ready(function () {
+	
+	
+	 $("#txtFromDate").datepicker({
+			showOn: "button",
+			buttonImage: "./images/date-picker.png",
+			buttonImageOnly: true,
+			minDate: " " 
+		});
+	 $("#txtToDate").datepicker({
+			showOn: "button",
+			buttonImage: "./images/date-picker.png",
+			buttonImageOnly: true,
+			minDate: " "
+		});
+		
+		$("#start_time").timepicker({
+			
+			showOn: "button",
+			buttonImage: "./images/date-picker.png",
+			buttonImageOnly: true,
+    ampm:true,
+    hour:9,
+    stepMinute:5,
+    timeFormat: "hh:mm"
+    
+    
+     
+          });
+
+});
+function saveDataIntoDB()
+{
+	var formName = document.getElementById('mynewform');
+	
+	
+	var myDate=new Date();
+	
+	var todaydate = new Date(myDate.getFullYear(),myDate.getMonth(),myDate.getDate());
+	
+
+	
+	
+	
+   if(formName.trainings_training_name.value=="" || formName.trainings_training_name.value==null)
+            	{
+      			alert("Training should not be empty");
+      			formName.trainings_training_name.select();
+      			formName.trainings_training_name.focus();
+                }
+	
+	else if(formName.txtFromDate.value=="" || formName.txtFromDate.value==null)
+            	{
+                alert("Start date should not be empty");
+      			formName.txtFromDate.select();
+      			formName.txtFromDate.focus();
+                }
+   else if(formName.txtToDate.value=="" || formName.txtToDate.value==null)
+            	{
+      			alert("EndDate should not be empty");
+      			formName.txtToDate.select();
+      			formName.txtToDate.focus();
+                }
+   else if(formName.trainings_duration.value=="" || formName.trainings_duration.value==null)
+            	{
+      			alert("Duration should not be empty");
+      			formName.trainings_duration.select();
+      			formName.trainings_duration.focus();
+                }
+   else if(formName.trainings_location.value=="" || formName.trainings_location.value==null)
+            	{
+      			alert("Location should not be empty");
+      			formName.trainings_location.select();
+      			formName.trainings_location.focus();
+                }
+   else if(formName.trainings_trainer_name.value=="" || formName.trainings_trainer_name.value==null)
+            	{
+      			alert("TrainerName should not be empty");
+      			formName.trainings_trainer_name.select();
+      			formName.trainings_trainer_name.focus();
+                } 
+   
+   else if(formName.trainings_trainer_contact.value=="" || formName.trainings_trainer_contact.value==null)
+            	{
+      			alert("TrainerContact should not be empty");
+      			formName.trainings_trainer_contact.select();
+      			formName.trainings_trainer_contact.focus();
+                }
+                
+   else if(isNaN(formName.trainings_trainer_contact.value)||(formName.trainings_trainer_contact.value).indexOf(" ")!=-1)
+      {
+                alert("Invalid Mobile No.");
+                formName.trainings_trainer_contact.select();
+      			formName.trainings_trainer_contact.focus();
+      } 
+  else if((formName.trainings_trainer_contact.value).length>10 || (formName.trainings_trainer_contact.value).length<10)            
+      
+      {
+      	        alert("Mobile No. should be 10 digit");
+      	        formName.trainings_trainer_contact.select();
+      			formName.trainings_trainer_contact.focus();
+      }
+      
+  else if(!((formName.trainings_trainer_contact.value).charAt(0)=="9" || (formName.trainings_trainer_contact.value).charAt(0)=="8"))
+      {
+      	        alert("Mobile No. should start with 9 or 8 ");
+      	
+      	        formName.trainings_trainer_contact.select();
+      			formName.trainings_trainer_contact.focus();
+      }
+  else if(formName.trainings_trainer_email_id.value=="" || formName.trainings_trainer_email_id.value==null)
+      {
+      			alert("TrainerEmailId should not be empty");
+      			formName.trainings_trainer_email_id.select();
+      			formName.trainings_trainer_email_id.focus();
+       }  
+       
+       
+    else if(formName.trainings_trainer_email_id.value!="")
+       {
+       	var x=formName.trainings_trainer_email_id.value;
+       	
+        var dotpos=x.lastIndexOf(".");
+        var atpos=x.indexOf("@");
+      	
+       }  
+       
+       if(atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+       {
+       	
+       	alert("Not a valid e-mail address");
+       	formName.trainings_trainer_email_id.select();
+        formName.trainings_trainer_email_id.focus();
+       }
+       
+       else
+               {  
+               formName.action='NominateTraining/create';
+	           formName.submit();
+	           }
+	
+}
+
+function cancel()
+{
+	var formName = document.getElementById('mynewform');
+	
+	formName.action='NominateTraining/cancel';
+	formName.submit();
+}
+
+
+</script>
+</head>
+
+<body>
+ <%- if !notice.nil? -%>
+ 
+ <h2><p class="notice" align="center"><%= notice %></p></h2>
+ 
+ <%- end -%> 
+<div id="admain">
+
+  <br/>
+  <h2>New training</h2>
+  <div class="portletSkin" style="height:250px;">
+    <div class="portletHeader">Trainee Details	</div>
+    <div style="padding:10px;">
+	  <form action="" method="get" id="mynewform" name="mynewform">
+      <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+        <tr>
+          <td width="20%"   class="tblLabel"><%= label_tag(:name, "Training") %></td>
+          <td width="36%" class="tblContent"><%= text_field(:trainings, :training_name, :class => "create_input") %></td>
+          
+          <td width="20%"   class="tblLabel"><%= label_tag(:name, "Training ID") %></td>
+          <td width="36%" class="tblContent"><%= text_field(:trainings, :training_id, :class => "create_input", :value => @new_id) %></td>
+          
+         </tr>
+        
+        <tr>
+          <td width="20%" class="tblLabel"><%= label_tag(:name, "StartDate") %></td>
+          <td width="36%" class="tblContent" ><input name="txtFromDate" type="text"  id="txtFromDate" size="10" class="inputField" value="" /></td>
+          <td width="20%" class="tblLabel"><%= label_tag(:name, "EndDate") %></td>
+          <td width="30%" class="tblContent" ><input name="txtToDate" type="text"  id="txtToDate" size="10" class="inputField" value="" /></td>
+        </tr>
+        <tr>
+           <td class="tblLabel"><%= label_tag(:name, "Duration") %></td>
+          <td class="tblContent" ><%= text_field(:trainings, :duration, :class => "create_input") %></td>
+          <td class="tblLabel"><%= label_tag(:name, "Location") %></td>
+          <td class="tblContent" ><%= text_field(:trainings, :location, :class => "create_input") %></td>
+          
+        </tr>
+        <tr>
+          <td class="tblLabel"><%= label_tag(:name, "TrinerName") %></td>
+          <td class="tblContent" ><%= text_field(:trainings, :trainer_name, :class => "create_input") %></td>
+          
+          <td class="tblLabel"><%= label_tag(:name, "TrainerEmailId") %></td>
+         
+           <td class="tblContent" ><%= email_field(:trainings, :trainer_email_id, :class => "create_input") %></td>
+          
+ </tr>
+        
+        <tr>
+        	
+        	<td class="tblLabel"><%= label_tag(:name, "TrinerContact#") %></td>
+          <td class="tblContent" ><%= text_field(:trainings, :trainer_contact, :class => "create_input",:maxlength => 10, :size => 20) %></td>
+          
+        	
+        	
+          
+          
+          
+          
+        </tr> 
+        
+      
+     
+   </div>
+        
+  </table>
+      </form>
+    </div>
+    
+    
+   
+        <div style="float:right;margin-top:5px;">
+      <div class="buttonBlueLeft" style="cursor:pointer">
+        <div class="buttonText" onclick="saveDataIntoDB()">Save</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+      <div class="buttonBlueLeft" style="margin-left:5px;">
+        <div class="buttonText" onclick="cancel()">Reset</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+      
+      
+  </div>
+   
+</div>
+
+
+
+</body>
+</html>

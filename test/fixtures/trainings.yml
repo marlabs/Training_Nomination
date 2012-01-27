@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  training_name: MyString
+  project_id: MyString
+  start_date: 2012-01-16
+  trainer_name: MyString
+  location: MyString
+  trainer_email_id: MyString
+  trainer_contact: MyString
+  duration: MyString
+  end_date: 2012-01-16
+
+two:
+  training_name: MyString
+  project_id: MyString
+  start_date: 2012-01-16
+  trainer_name: MyString
+  location: MyString
+  trainer_email_id: MyString
+  trainer_contact: MyString
+  duration: MyString
+  end_date: 2012-01-16

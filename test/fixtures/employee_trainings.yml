@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  training_id: 1
+  employee_id: 1
+  status: 1
+  comments: MyString
+
+two:
+  training_id: 1
+  employee_id: 1
+  status: 1
+  comments: MyString

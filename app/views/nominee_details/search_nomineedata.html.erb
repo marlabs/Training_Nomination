@@ -1,0 +1,74 @@
+    <form id="frmMain" name="frmMain" method="post">
+  <div class="portletSkin" style="height:500px;" id="searchtoggling">
+    <div class="portletHeader">Trainee Details	</div>
+    <div style="padding:10px;" id="new">
+    <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder" id="testnew">
+        <tr class="thead">
+         
+          <td>Employee ID</td>
+          <td>Employee Name</td>
+          <td>Training Name</td>
+          <td>Approved Manager</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Project</td>
+          <td>status</td>
+        </tr>
+       
+        
+	<% if @nominee_details.length > 0%>
+      <%  @nominee_details.each do |data|  %>
+     	
+     	<%if (data.status ==2)%>
+        <tr class="tblRow1">
+         <%= hidden_field_tag('employee_training_id[]',  data.id) %>
+         <td><%= data.emp_number%></td>
+         <td><%= data.employee_name%></td>
+         <td><%= data.training_name%></td>
+         <td><%= data.manager_name%></td>
+         <td><%= data.start_date%></td>
+         <td><%= data.end_date%></td>
+         <td><%= data.duration%></td>
+         <td><%= data.location%></td>
+         <td><%= data.project%></td>
+         <td>Approved</td>
+        </tr>
+      <%else%>
+      	<tr class="important" >
+        <td><a  onclick="summary('<%= data.id%>')"><%= data.emp_number%></a></td>
+         <td><%= data.employee_name%></td>
+         <td><%= data.training_name%></td>
+         <td><%= data.manager_name%></td>
+         <td><%= data.start_date%></td>
+         <td><%= data.end_date%></td>
+         <td><%= data.duration%></td>
+         <td><%= data.location%></td>
+         <td><%= data.project%></td>
+         <td>Not Approved , Please click the link</td>
+        </tr>
+      	 <%end%>
+        <%end%>
+   
+<% else %>
+
+
+<tr align="center"><td align="center" colspan="11"><h3><%= 'No Records Found' %></h3></td></tr>
+
+      <%end%>
+           
+      </table>
+      </div>
+       <div style="float:right;margin-top:5px;">
+      <div class="buttonBlueLeft" style="cursor:pointer">
+      	
+        <div class="buttonText" onclick="approve();">SendApprovedMail</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+     
+    </div>
+    </div></div> 
+    
+    </form>
+   

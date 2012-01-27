@@ -1,0 +1,47 @@
+  <form id="frmMain" name="frmMain">
+  <div class="portletSkin" style="height:400px;" id="searchtoggling">
+    <div class="portletHeader">Trainee Details	</div>
+    <div style="padding:10px;" id="new">
+    <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+        <tr class="thead">
+          <td align="center"><input type="checkbox" name="chk5" id="chk5" />
+          </td>
+          <td>Employee ID</td>
+          <td>Employee Name</td>
+          <td>Training Name</td>
+          <td>Approved Manager</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Project</td>
+        </tr>
+       
+        
+	
+      <%  @nominee_details.each do |data|  %>
+
+
+        <tr class="tblRow1">
+        	
+          <td align="center">"><%= check_box_tag "checkedids[]", c.id, checked = false %>
+          </td>
+        <td><%= data.emp_number%></td>
+         <td><%= data.emp_name%></td>
+         <td><%= data.training_name%></td>
+         <td><%= data.manager_name%></td>
+         <td><%= data.start_date%></td>
+         <td><%= data.end_date%></td>
+         <td><%= data.duration%></td>
+         <td><%= data.floor%></td>
+         <td><%= data.project%></td>
+        </tr>
+      
+        <%end%>
+
+      
+           
+      </table>
+      </div>
+    </div></div>
+    </form>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	</head>
+	<body>
+		<table>
+		<tr>
+			<td>Dear <%= @emp.employee.employee_name %> ,</td>
+			
+			
+		</tr>
+		<tr>
+			<td>
+			You have successfully nominated for the training, please find the training  and schedule information
+			
+			</td>
+		</tr>
+		<tr>
+			<tr>
+				</tr>
+				</tr>
+				<tr>
+					<td>
+						Training Name : <%= @emp.training.training_name %>
+						</td>
+					
+				</tr>
+				<tr>
+					<td>
+						Start Date : <%= @emp.training.start_date %>
+						</td>
+					
+				</tr>
+				<tr>
+					<td>
+						End Date : <%= @emp.training.end_date %>
+						</td>
+					
+				</tr>
+				<tr>
+					<td>
+						Duration : <%= @emp.training.duration %> 
+						</td>
+					
+				</tr>
+				<tr>
+					<td>
+						Location : <%= @emp.training.location %> floor
+						</td>
+					
+				</tr>
+				
+				<tr>
+					
+					<tr></tr>
+				</tr>
+				<tr>
+					<td>
+					Thanks&Regards,
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Marlabs HR Team
+						<td>
+					</tr>
+					</table>
+	</body>
+</html>

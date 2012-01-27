@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employee_name: MyString
+  emp_number: 1
+  project: MyString
+  email_id: MyString
+  skill: MyString
+  start_date: 2012-01-16
+  manager_name: MyString
+
+two:
+  employee_name: MyString
+  emp_number: 1
+  project: MyString
+  email_id: MyString
+  skill: MyString
+  start_date: 2012-01-16
+  manager_name: MyString

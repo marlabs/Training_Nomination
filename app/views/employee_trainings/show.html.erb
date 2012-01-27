@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Training:</b>
+  <%= @employee_training.training_id %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @employee_training.employee_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @employee_training.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_employee_training_path(@employee_training) %> |
+<%= link_to 'Back', employee_trainings_path %>

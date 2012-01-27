@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Marlabs - Nominate Trainee Details - Manager Approval</title>
+<script type="text/javascript">
+$(document).ready(function () {
+	 $("#txtFromDate").datepicker({
+			showOn: "button",
+			buttonImage: "../images/date-picker.png",
+			buttonImageOnly: true
+		});
+	 $("#txtToDate").datepicker({
+			showOn: "button",
+			buttonImage: "../images/date-picker.png",
+			buttonImageOnly: true
+	});
+	$("#colorChange tr:odd").css("background-color","#b7d5df");
+		
+});
+
+function aproveReq() {
+				
+				var	ids=document.getElementsByName("checkedids[]");
+				var j=0; 
+        		for (i=0, l=ids.length; i<l; i++) 
+       				 { 
+			            if (ids[i].checked==true) 
+			            { 
+			                 j++; 
+			                 
+			            } 
+			        } 
+			      if (j==0) 
+			       { 
+			          alert("please select a checkbox") 
+			       }	
+			       else{
+			       	var formName = document.getElementById('my_newform');			
+						formName.action = 'ManagerApproval/approve';
+						formName.submit();
+			       }		       
+}
+
+function rejectReq() {
+			 	var	ids=document.getElementsByName("checkedids[]");
+				var j=0; 
+        		for (i=0, l=ids.length; i<l; i++) 
+       				 { 
+			            if (ids[i].checked==true) 
+			            { 
+			                 j++; 
+			                 
+			            } 
+			        } 
+			       if (j==0) 
+			       { 
+			          alert("please select a checkbox") 
+			       }
+			       else{
+			       	var formName = document.getElementById('my_newform');
+									formName.action = 'ManagerApproval/reject';
+									 formName.submit();
+			       	
+			       }
+				 
+			 }
+</script>
+</head>
+
+<body>
+<div id="admain">
+<h2><p class="notice" align="center"><%= notice %></p></h2>
+  <h2>Nominate Trainee Details - Manager Approval</h2> 
+  <div class="portletSkin" style="height:400px;">
+    <div class="portletHeader">Trainee Details</div>
+    <div style="height:20px"></div>
+    <div style="_margin-top:-20px;*margin-top:-20px;margin-top:-20px\9;padding:0 10px 0 10px">
+    <form action="" method="get" id="my	newform" name="my_newform">
+      <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder" id="colorChange">
+        <tr class="thead">
+          <td align="center"><input type="checkbox" name="chk5" id="chk5" />
+          </td>
+          <td>Employee ID</td>
+          <td>Employee Name</td>
+          <td>Training Name</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Project</td>
+          <td>Comments</td>
+        </tr>
+        <% if (@employee_trainings.length > 0) %>
+		<% @employee_trainings.each do |train|	%>
+        <tr>
+          <td align="center"><%= check_box_tag "checkedids[]" ,train.id, checked = false%></td>
+          <td><%= train.emp_number%></td>
+          <td><%= train.employee_name%></td>
+          <td><%= train.training_name%></td>
+          <td align="center"><p><%= train.start_date%></p></td>
+          <td align="center"><%= train.end_date%></td>
+          <td align="center"><%= train.duration%></td>
+          <td><%= train.location%></td>
+          <td><%= train.project%></td>
+          <td><%= text_area_tag 'comments',nil,:class => "create_input",:size => "20x1" %></td>
+          <%end%>
+          <%end%>
+        </tr>
+      </table>
+      </form>
+    </div>
+</div>
+<div style="float:right;margin-top:5px;">
+      <div class="buttonBlueLeft" style="cursor:pointer">
+      	<div class="buttonText" onclick="aproveReq()"> Approve </div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+      <div class="buttonBlueLeft" style="margin-left:5px;">
+        <div class="buttonText" onclick="rejectReq()">Reject</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+</div>
+</div>
+</body>
+</html>

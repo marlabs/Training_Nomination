@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+
+
+<title> Nominate Trainee Details</title>
+<%- if !notice.nil? -%>
+ 
+ <h2><p class="notice" align="center"><%= notice %></p></h2>
+ 
+ <%- end -%> 
+   <h2>Nominate Trainee Details </h2>
+  	<%= form_for(@employee) do |i| %>
+  	
+    <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+     <tr>
+      <td width="20%"   class="tblLabel"><%= label(:employees, :name, "Employee Name", :class => "tblLabel") %>  </td>
+      <td width="36%" class="tblContent"><%= text_field(:employees, :name, :class => "inputField ", :value => @employee.employee_name , :readonly =>"readonly" ) %></td>
+      <td width="20%" class="tblLabel"><%= label(:projects, :project, "Project", :class => "tblLabel") %></td>
+      <td width="30%" class="tblContent"><%= text_field(:employees, :name, :class => "inputField ", :value => @employee.project , :readonly =>"readonly" ) %></td>
+      	
+      </td>
+    </tr>
+      <td width="20%" class="tblLabel"><%= label(:employee, :id, "Employee Id", :class => "tblLabel") %></td>
+      <td width="36%" class="tblContent" ><%= text_field(:employees, :emp_number, :class => "inputField", :value => @employee.emp_number, :readonly =>"readonly" ) %></td>
+      <td width="20%" class="tblLabel"><%= label(:depts, :dept, "Email id", :class => "tblLabel") %></td>
+      <td width="36%" class="tblContent" ><%= text_field(:employees, :empCode, :class => "inputField" , :value => @employee.email_id , :readonly =>"readonly") %></td>
+      </table>
+      <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+      <tr>
+        <td width="20%"   class="tblLabel" valign="top"> Skill</td>
+        <td colspan="3" class="tblContent"><%= collection_select :skill,:id, @skills, :id, :technologies, {}, {:multiple => true}%></td>
+      </tr>
+      <tr>
+        <td class="tblLabel">Start Date</td>
+        <td><%= text_field :training, :start_date %></td>
+        <td width="20%" class="tblLabel">End Date</td>
+        <td><%= text_field :training, :end_date %></td>
+      </tr>
+    </table>
+    <table>
+    <tr>
+    	
+    	<td width="100%" align='right'></td><td align="right">
+    	<td align="right"><%= submit_tag "Search", :type => 'button', :id =>"search_button", :class=> "buttonBlueLeft" %></td>
+    		<td width="100%" align='right'></td><td align="right">
+    
+    	<td align="right"> <%= submit_tag "Reset", :type => 'button', :onClick => "resetdata();" , :class=> "buttonBlueLeft"%></td>
+    	<td width="80%" align='right'></td><td align="right">
+    	
+    	   </tr>
+    </table> 
+   
+  <% end %>
+     
+    <div id="result">
+    </div>
+    <tr>
+      
+</body>
+ <script>
+ 
+$('#search_button').click(function (){
+var	skill_id =$('#skill_id').val();
+var start_date =$('#training_start_date').val();
+var end_date =$('#training_end_date').val();
+       $.ajax({
+          url: "search_nominee_employee_nomination",
+          data: 'skill_id='+skill_id + '&start_date='+start_date + '&end_date='+end_date ,
+          success: function(data){
+		  $("#result").html(data);
+		  }
+	});
+})
+function resetdata(){
+	$('#searchtoggling').hide();
+	document.getElementById('training_start_date').value="";
+	document.getElementById('training_end_date').value="";
+	
+}
+
+$(document).ready(function () {
+	
+	 $("#training_start_date").datepicker({
+			showOn: "button",
+			buttonImage: "/images/date-picker.png",
+			buttonImageOnly: true,
+		    minDate: " "
+			 
+		});
+	 $("#training_end_date").datepicker({
+			showOn: "button",
+			buttonImage: "/images/date-picker.png",
+			buttonImageOnly: true,
+			minDate: " "
+		});
+});
+
+</script>
+</html>	

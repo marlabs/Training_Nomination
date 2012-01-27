@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Marlabs - Nominate Trainee Details - HR Review</title>
+
+<link href="./css/masterStyle.css" type="text/css" rel="stylesheet" />
+<script src="./js/jquery.js" type="text/javascript" ></script>
+<script src="./js/jquery-ui-1.8.1.custom.min.js"  type="text/javascript" ></script>
+<script src="./js/jquery.ui.datepicker.js" type="text/javascript" ></script>
+<link href="./css/jquery-ui-1.css" type="text/css" rel="stylesheet" />
+<link href="./css/jquery-ui-1.8.16.custom.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+
+
+
+$(document).ready(function () {
+	
+	
+	 $("#txtFromDate").datepicker({
+			showOn: "button",
+			buttonImage: "C:/Documents and Settings/gangadharks/My Documents/Aptana Studio 3 Workspace/Training_Nomination/app/assets/images/date-picker.png",
+			buttonImageOnly: true
+		});
+	 $("#txtToDate").datepicker({
+			showOn: "button",
+			buttonImage: "C:/Documents and Settings/gangadharks/My Documents/Aptana Studio 3 Workspace/Training_Nomination/app/assets/images/date-picker.png",
+			buttonImageOnly: true
+		});
+});
+</script>
+</head>
+
+<body>
+<div id="admain">
+  <h2>Nominate Trainee Details - HR Review</h2> 
+  <div>
+    <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+      <tr>
+        <td width="20%"   class="tblLabel" valign="top"> Training Name</td>
+        <td colspan="3" class="tblContent">
+        	<%#= select_tag 'trainingname',options_from_collection_for_select(@trainings, 'id', 'trainingSkill', 15),:include_blank => true %>
+       
+        <%= collection_select :employees,:id, @NominateTraining, :id, :trainingSkill%> 	
+        </td>
+        <td width="20%" class="tblLabel" valign="top">Status</td>
+        <td colspan="3" class="tblContent">
+        	<select name="select2" id="select2" class="inputField">
+            <option value="0">Select</option>
+            <option value="1">Approved</option>
+            <option value="2">Not yet approved</option>
+          </select>
+          </td>
+        
+      
+      </tr>
+      <tr>
+        <td class="tblLabel">Start Date</td>
+        <td width="36%" class="tblContent" ><input name="txtFromDate" type="text"  id="txtFromDate" size="10" class="inputField" /></td>
+        <td width="20%" class="tblLabel">End Date</td>
+        <td width="30%" class="tblContent" ><input name="txtToDate" type="text"  id="txtToDate" size="10" class="inputField" /></td>
+      </tr>
+    </table>
+  
+   <div style="float:right;margin-top:5px;">
+      <div class="buttonBlueLeft" style="cursor:pointer">
+        <div class="buttonText">Search</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+      <div class="buttonBlueLeft" style="margin-left:5px;">
+        <div class="buttonText">Reset</div>
+        <div class="buttonBlueRight_M"></div>
+      </div>
+    </div>
+
+  </div>  <br />  <br />  <br />
+  <div class="portletSkin" style="height:400px;">
+    <div class="portletHeader">Trainee Details	</div>
+    <div style="padding:10px;">
+      <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+        <tr class="thead">
+          <td align="center"><input type="checkbox" name="chk5" id="chk5" />
+          </td>
+          <td>Employee ID</td>
+          <td>Employee Name</td>
+          <td>Training Name</td>
+          <td>Approved Manager</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Project</td>
+        </tr>
+        <tr class="tblRow1">
+          <td align="center"><input type="checkbox" name="chk" id="chk" />
+          </td>
+          <td>100221</td>
+          <td>Anoop Madhusudhan</td>
+          <td>.Net Training</td>
+          <td>Rajesh Patel</td>
+          <td align="center"><p>Dec 14,2011  - 1.30 PM</p></td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">1</td>
+          <td>Training Room 5th Floor</td>
+          <td>-</td>
+        </tr>
+        <tr class="tblRow2">
+          <td align="center"><input type="checkbox" name="chk2" id="chk2" />
+         </td>
+          <td>124545</td>
+          <td>Manoj Babu</td>
+          <td>Knowledge on UX </td>
+          <td>Ragunath Prabhakar</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">1</td>
+          <td>Training Room 5th Floor</td>
+          <td>-</td>
+        </tr>
+        <tr class="tblRow1">
+          <td align="center"><input type="checkbox" name="chk3" id="chk3" />
+           </td>
+          <td>102452</td>
+          <td>Mohammed Ali</td>
+          <td>Future on Ruby on Rails</td>
+          <td>Rajesh Patel</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">1</td>
+          <td>Training Room 5th Floor</td>
+          <td>Kaplan Medical</td>
+        </tr>
+        <tr class="tblRow2">
+          <td align="center"><input type="checkbox" name="chk4" id="chk4" />
+           </td>
+          <td>654482</td>
+          <td>Suresh Kumar</td>
+          <td>Java Fundamentals</td>
+          <td>Rajesh Patel</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">Dec 14,2011  - 1.30 PM</td>
+          <td align="center">1</td>
+          <td>Training Room 5th Floor</td>
+          <td>TMobile</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

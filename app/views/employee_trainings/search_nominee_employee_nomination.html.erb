@@ -1,0 +1,39 @@
+ <%= form_for(@trainings,:url => {:action =>"nominate"},:method =>"get") do |f|%>
+ <div class="portletSkin" style="height:400px;" id="searchtoggling" display:none>
+    <div class="portletHeader">Nominate Trainee Details</div>
+    <div style="padding:10px;">
+      <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tblBorder">
+        <tr class="thead">
+          <td align="center"><input type="checkbox" name="chk5" id="chk5" />
+          	
+          </td>
+          <td>Training ID</td>
+          <td>Training Name</td>
+          <td>Trainer Name</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Duration</td>
+        </tr>
+       <% if (@trainings.length > 0) %> 
+       	<% @trainings.each do |i| %>
+          <tr class="tblRow1">
+	         <td align="center"> <%= check_box_tag('employee_training_id[]',i.id) %></td>
+	         <td><%= i.training_id %></td>
+	         <td><%= i.training_name %></td>
+	         <td><%= i.trainer_name %></td>
+	         <td><%= i.start_date %></td>
+	         <td><%= i.end_date %></td>
+	         <td><%= i.duration %></td>
+	        
+         </tr>
+        <%end%>
+       <%end %>
+</table>
+
+   <div style="float:right;margin-top:5px;">
+      <div style="cursor:pointer">
+        <div ><%= submit_tag "Nominate",:class=> "buttonBlueLeft" %></div>
+        <div></div>
+      </div>
+    </div>
+    <%end%>

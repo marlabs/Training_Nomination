@@ -1,0 +1,160 @@
+body {
+	border:0px;
+	margin:0px;
+	padding:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+#admain {
+	margin:10px;
+	width:98%;
+}
+.portletHeader {
+	background-color:#0878a7;
+	color:#fff;
+	height: 18px;
+	font-size:12px;
+	font-weight:bold;
+	border-bottom: 2px solid #376aab;
+	padding: 6px 0px 3px 5px;
+}
+.portletSkin {
+	background-color: #FFFFFF;
+	border: 1px solid #e0eafe;
+	border-top:0px;
+	margin-bottom: 10px;
+	display: block;
+}
+.tblBorder {
+	border:1px solid #dcdcdc;
+	width:100%;
+}
+.tblLabel {
+	background-color:#d3e1ef;
+	color:#000;
+	font-weight:bold
+}
+.tblContent {
+	background-color:#f6f6f6;
+	color:#000
+}
+.tblHeader {
+}
+.tblRow1 {
+	background-color:#b7d5df;
+}
+.tblRow2 {
+	background-color:#FFF;
+}
+/*Buttons*/
+	.buttonText {
+	float: left;
+	padding: 5px 5px 0 10px;
+	height: 28px;
+	text-align: center
+}
+.searchButtonText {
+	float: left;
+	padding: 3px 2px 0px 10px;
+	height: 24px;
+	text-align: center
+}
+.buttonBlueLeft, .buttonBlueRight_M, .buttonBlueLeft:hover, .buttonBlueRight_M:hover {
+	background-image: url(../images/img_icons.gif);
+	background-repeat: no-repeat;
+	height: 28px;
+	cursor: pointer;
+	color: #FFFFFF;
+	float: left;
+	white-space: nowrap;
+}
+.buttonBlueLeft {
+	background-position: -0px -130px;
+	width: auto;
+}
+.buttonBlueRight_M {
+	background-position: -0px -40px;
+	width: 7px;
+}
+.buttonBlueLeft:hover {
+	background-position: -0px -99px;
+	width: auto;
+}
+.buttonBlueRight_M:hover {
+	background-position: -0px -68px;
+	width: 7px;
+}
+.buttonBlueLeft:hover div.buttonBlueRight_M {
+	background-position: -0px -69px;
+	width: 7px;
+}
+.buttonBlueRight_M:hover div.buttonBlueLeft {
+	background-position: -0px -131px;
+	width: auto;
+}
+/*FONTS*/
+a {
+	color:#000;
+	text-decoration:underline;
+}
+a:hover {
+	color:#000;
+	text-decoration:none;
+}
+.inputField {
+	border:1px solid #999999;
+	color:#383838;
+}
+.inputFieldErr {
+	
+	border:1px solid #FF0000;
+	color:#383838;
+}
+.inputFieldErrTextArea {
+	
+	border:1px solid #FF0000;
+	color:#000000;
+	background-color:#FFFFFF;
+}
+.inputFieldErrSel {
+	
+	border:1px solid #FF0000;
+	color:#000000;
+	background-color:#FFB3B3;
+}
+.inputFieldErrCheck {
+	
+	background-color:#FFB3B3;
+}
+.TBoxRO {
+	border:0px;
+	background-color:#f6f6f6;
+	color:#000
+}
+.thead {
+	background-color:#5b9eaf;
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+}
+#totalRow {
+	background-color:#fff5bf;
+	font-size:18px;
+	font-weight:bold;
+	text-align:right;
+	padding:5px 20px 5px 5px;
+	width:98.3%;
+	border-top:1px solid #fed65c;border-bottom:2px solid #fed65c;
+}
+h2 {
+	color:#2b6999;
+}
+#dataGrid{float:left;width:100%;margin-top:5px;padding:3px;}
+.searchResults{
+	background-color:#693;
+	font-size:14px; color:#FFF;
+	font-weight:bold; padding:5px;
+
+}
+.booked{background-image:url(../images/bookedBg.png); background-repeat:repeat-x; height:100%;padding:5px;}
+.Available{padding:5px;}

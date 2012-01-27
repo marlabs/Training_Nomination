@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	</head>
+	<body>
+		<tr>
+			<td>Dear<%= @emaildatas.employee.employee_name %>,<br/>
+				<br />
+				 We are sorry to inform you that your training nomination has been rejected by your manager  Mr.Ali with below reason <br/>
+				 <br/>
+				 Training Name :<%= @emaildatas.training.training_name %><br/>
+				 Start Date :<%= @emaildatas.training.start_date %><br/>
+				 Rejection Reason :<%= @emaildatas.comments%><br/>
+				 <br/>
+				 <br />
+				Thanks & Regards, <br />
+				Marlabs Training Team</td>
+		</tr>
+		
+	</body>
+</html>
